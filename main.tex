@@ -1,0 +1,24 @@
+\input{preamble_final.tex}
+
+\begin{document}
+    \maketitle
+    \thispagestyle{fancy}
+    
+    \input{abstract.tex}
+    
+  \begin{multicols}{2}
+        \input{Introduction.tex}
+        \input{init.tex}
+        \input{time_evol.tex}
+        \input{equil.tex}
+        \input{phys.tex}
+        \input{results.tex}
+        \input{Conclusion.tex}
+        
+        \bibliography{library}{}
+        \bibliographystyle{unsrt}
+        
+        \appendix
+        \input{Appendices.tex}
+     \end{multicols}
+\end{document}
