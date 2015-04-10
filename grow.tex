@@ -1,13 +1,14 @@
 \section{Rosenbluth algorithm}
-Polymers are grown using the Rosenbluth algorithm \cite{rosenbluth1955monte}. Between the beads we take a fixed distance of 1. The first two bead of a polymer are placed at positions $(0,0)$ and $(1,0)$. For the third bead, a discrete number of candidate positions $\theta_j$ are determined. In our case $j=1,\cdots,6$. Since the distance between neighbouring beads is always one, these positions lie on a circle around the first bead, with a spacing of $2\pi/6$ between them and with a random offset. 
+Polymers are grown using the Rosenbluth algorithm \cite{rosenbluth1955monte}. Between the beads we take a fixed distance of 1. The first two bead of a polymer are placed at positions $(0,0)$ and $(1,0)$. Since the distance between beads is fixed, there is no interaction between adjacent beads and so the positions of the first and second bead of a polymer are irrelevant. For the third bead, a discrete number of candidate positions $\theta_j$ are determined. In our case $j=1,\cdots,6$. Since the distance between neighbouring beads is always one, these positions lie on a circle around the first bead, with a spacing of $2\pi/6$ between them and with a random offset. 
 \begin{gather}
     w_j^{(l)} = e^\frac{-E(\theta_j)}{k_BT},
 \end{gather} where $l$ denotes the bead that will be added, $E(\theta_j)$ is the energy associated with candidate position $\theta_j$. The sum of the weights $w_j^{(l)}$ from the candidate positions is $W^{(l)} = \sum_j w_j^{(l)}$. The final position of bead $l$ is then chosen with probability $w_j^{(l)}/W^{(l)}$. This is done using the earlier mentioned roulette-wheel algorithm. 
 
-Not all polymer configurations are equally likely, to this end the polymers have weights assigned to them. When a polymer of $L$ beads is fully grown, the weight of the polymer is $\prod_{l=2}^L w_j^{(L)}$ ($l=2$ is the third polymer, since the simulation starts counting at $0$). Trivially a less likely polymer configuration will have lower weight then a more likely configuration.
+Not all polymer configurations are equally likely, to this end the polymers have weights assigned to them. When a polymer of $L$ beads is fully grown, the weight of the polymer is 
+\begin{equation}\label{eq:polymer_weight}
+    \prod_{l=2}^L w_j^{(L)}.
+\end{equation} Note that $l=2$ is the third polymer, since the simulation starts counting at $0$. Trivially a less likely polymer configuration will have lower weight then a more likely configuration.
 
-The energy between the
+The 
+\todo[inline]{Some text about how the weight compensate the probabilities.}
 
-\begin{gather}
-    V_{LJ} = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6} \right] ,
-\end{gather} where $\epsilon$ is the depth of the potential well, $\sigma$ is the finite distance where the potential is zero and $r$ is the distance between two particles. The parameters chosen for the LJ potential are $\epsilon=0.25$ and $\sigma=0.8$.

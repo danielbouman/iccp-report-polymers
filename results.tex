@@ -1,1 +1,4 @@
 \section{Results and discussion}
+
+\subsection{Some notes on the program}
+The energy calculations, LJ potential and bending energy, are for better performance written in Fortran. To make a connection between the Fortran code and the Python program, an interface is made using \emph{Fortran to Python interface generator} (F2PY). F2PY creates a Python C/API extension module that makes it possible to call the in Fortran written energy subroutine.
