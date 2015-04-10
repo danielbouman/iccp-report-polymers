@@ -2,7 +2,14 @@
 
 
 \subsection{Markov chain}
-For a canonical ensemble the probability of a given state $X$ is proportional to $P(X) \propto e^{-\beta E(X)}$. However, for states which have high energies $E$, the probabilities $P$ become vanishingly small. For computional reasons then, a bias for lower energies should be implemented when generating configurations. For polymers, it is natural to generate configurations on a per monomer basis. The energy difference in adding a single monomer, and so also the Boltzmann weight, is dependent only on previously placed monomers. This means we can model the system as a Markov chain.
+For a canonical ensemble the probability of a given state $X$ is proportional to the Boltzmann weight, $P(X) \propto e^{-\beta E(X)}$. Here $\beta=1/\left(k_B T\right)$, where $k_B$ is the Boltzmann constant, $T$ the temperature and $E(X)$ the energy of a state $X$. However, for states which have high $E$ the probabilities $P$ become vanishingly small. \pdfmarkupcomment[markup=Highlight,author={Daniel}]{For computational reasons then, a bias for lower energies should be implemented when generating configurations.}{It is too ambiguous}
+
+For polymers, it is natural to generate configurations on a per monomer basis. The energy gained by adding a monomer is dependent only on previously placed monomers. This means we can model the system as a Markov chain.
+
+\subsection{Monte carlo}
+
+\subsection{Roulette-wheel algorithm}
+The roulette-wheel algorithm, also known as fitness proportionate selection, is a method to select a member $j$ from a population with $N$ members, with a certain probability $p_j$. This is done by dividing the interval $[0,1]$ into $N$ segments of size $p_j$. Then a uniform random number is generated in that same interval. A member is selected by checking in which interval the random number lies.
 
 \subsection{Rosenbluth and Rosenbluth algorithm}
-In $n$ dimensions, if the distance between each monomer is set to 1, the $N_{\theta}$ amount of possible new monomer positions are positioned on a ($n$-1)-sphere of unit radius, with the last monomer as the centre.
+In $d$ dimensions, if the distance between each monomer is set to 1, the amount of possible new monomer positions $N_{\theta}$ are positioned on a ($d$-1)-sphere of unit radius, with the last monomer as the centre.
