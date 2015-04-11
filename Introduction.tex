@@ -1,7 +1,7 @@
 \section{Introduction}
 To study the behaviour of monopolymers of different lengths at various temperatures a simulation is written in Python and Fortran. The model for the polymers in is based on approximating the interaction between the monomers with a Lennard-Jones potential and a bending energy between adjacent monomers. By assuming the polymers are in a dilute solution, polymer-polymer self-interactions will prevail. This means that to extract data of the behaviour of the polymers, creating an ensemble of individual polymers will be sufficient.
 
-The interaction between the beads is modelled by a Lennard-Jones (LJ) potential (Eq. \ref{eq:lj}, which represents a Van der Waals attraction at larger distances and repulsion at smaller distances, and a bending energy (Eq. \ref{eq:bending_energy}), which simulates the semi-flexibility of polymers.
+The interaction between the beads is modelled by a Lennard-Jones (LJ) potential (Eq. \ref{eq:lj}), which represents a Van der Waals attraction at larger distances and repulsion at smaller distances, and a bending energy (Eq. \ref{eq:bending_energy}), which simulates the semi-flexibility of polymers.
 \begin{equation}\label{eq:lj}
     V_{LJ} = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6} \right],
 \end{equation} where $\epsilon$ is the depth of the potential well, $\sigma$ is the finite distance where the potential is zero and $r$ is the distance between two particles. The parameters chosen for the LJ potential are $\epsilon=0.25$ and $\sigma=0.8$ \cite{jmt}.
