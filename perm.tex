@@ -1,23 +1,27 @@
 \section{Pruning and enrichment}
-For long chains the Rosenbluth method becomes inefficient, as was shown by Batoulis and Kremer \cite{batoulis1988statistical}. To make the Rosenbluth algorithm more efficient, Grassberger has suggested pruning and enriching the population. If a partially grown polymer gets a weight below a certain threshold, it is discarded or 'pruned'. When a partially grown polymer gets a weight above a certain, the polymer is split. Both polymers are independently grown from this point on. The population is now 'enriched'. This combined with the Rosenbluth algorithm is called pruned-enriched Rosenbluth method (PERM). 
+For long chains the Rosenbluth method becomes inefficient, as was shown by Batoulis and Kremer \cite{batoulis1988statistical}. To make the Rosenbluth algorithm more efficient, Grassberger has suggested pruning and enriching the population. If a partially grown polymer gets a weight below a certain threshold, half of the time the polymer is discarded (`pruned'), and the other half of the time its weight is doubled (to compensate for the pruned polymers) and growing continues. When a partially grown polymer gets a weight above a certain threshold, the polymer is split. Both polymers are independently grown from this point on and their weights are halved. The population is now `enriched'. This combined with the Rosenbluth algorithm is called the pruned-enriched Rosenbluth method (PERM).
 
 The reasoning behind pruning and enrichment is that it is inefficient to continue growing a partial polymer with a low weight since it will have a low contribution to the weighted average. It is then better to prune this polymer and start over. When a polymer gets a relatively high weight it is important and advantageous to make a copy of this polymer.
 
-The partition sum of a canonical ensemble in thermal equilibrium is given by
-\begin{gather*}
-    Z(\beta) = \sum_X e^{-\beta E(X)}.
-\end{gather*}
+\todo[inline]{Illustration of pruning and enrichment}
+
 For a finite system the partition sum can be estimated by \cite{hsu2011review}
+=======
+    Z(\beta) = \sum_\alpha e^{-\beta E(\alpha)}.
+\end{gather*} For a finite system the partition sum can be estimated\cite{hsu2011review} by 
+>>>>>>> 84db36b6823c94fd65cbd367ddf23d2dc2fbb40f
 \begin{gather*}
-    Z_n \simeq \hat{Z}_n
-    = \frac{1}{N_l} \sum_{n=0}^{N_l}W_l(n),
-\end{gather*} where $N_l$ is the number of completed polymers, 
-
+    Z^{(l)} \simeq \hat{Z}^{(l)}
+    = \frac{1}{N_l} \sum_{n=0}^{N_l}W_n^{(l)},
+\end{gather*} where $N_l$ is the number of thus far completed polymers. The partition function is used to determine the upper limit $W_n^+$ and lower limit $W_n^-$ for the polymer weights, above or below which a polymer is enriched or pruned respectively as described by Hsu and Grassberger\cite{hsu2011review}. This is done as follows
 \begin{gather*}
-    W_n^+ = C_+\hat{Z}_n,\\
-    W_n^- = C_-\hat{Z}_n,
-\end{gather*} where $C_+$ and $$
+    W_+^{(l)} = C_+\hat{Z}^{(l)},\\
+    W_-^{(l)} = C_-\hat{Z}^{(l)},
+\end{gather*} where $C_+$ and $C_-$ are constants of order unity and should have a ratio $C_+/C_- \simeq \mathcal{O}(10)$. These constants determine if the population will grow or shrink and are chosen by running the simulation with different values and choosing the best combination.
 
-$C_+/C_- \simeq \O(10)$
+For the first polymer there are no $\hat{Z}^{(l)}$ yet, so for this polymer the upper and lower limits are set to infinity and zero respectively ($ W_+^{(l)}= \infty$ and $W_-^{(l)}=0$). Resulting in the regular Rosenbluth algorithm.
 
-For the first polymer there are no 
+The expectation value of a physical quantity $A$ can be determined by 
+\begin{equation}
+    \langle A \rangle^{(l)} = \frac{\sum_{n=0}^{N_l}A_nW_n^{(l)}}{\sum_{n=0}^{N_l}W_n^{(l)}}.
+\end{equation}

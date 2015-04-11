@@ -1,2 +1,2 @@
-# ICCP MD project report
+# ICCP PERM polymers project report
 compile main.tex

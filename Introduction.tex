@@ -10,7 +10,7 @@ The interaction between the beads is modelled by a Lennard-Jones (LJ) potential 
 \end{equation} where $\epsilon_b\geq 0$ is the bending energy strength and $\theta$ is the angle between the new and preceding bead \cite{hsu2011review}.
 
 \subsection{Markov chain}
-For a canonical ensemble the probability of a given state $X$ is proportional to the Boltzmann weight $w$, $P(X) \propto w = e^{-\beta E(X)}$. Here $\beta=1/\left(k_B T\right)$, where $k_B$ is the Boltzmann constant, $T$ the temperature and $E(X)$ the energy of state $X$. However, for states which have high $E$ the probabilities $P$ become vanishingly small. For computational reasons then, a bias for lower energies should be implemented when generating configurations.\todo[inline]{This is too ambiguous}
+For a canonical ensemble the probability of a given state $X$ is proportional to the Boltzmann weight, $P(\alpha) \propto e^{-\beta E(\alpha)}$. Here $\beta=1/\left(k_B T\right)$, where $k_B$ is the Boltzmann constant, $T$ the temperature and $E(X)$ the energy of a state $\alpha$. However, for states which have high $E$ the probabilities $P$ become vanishingly small. For computational reasons then, a bias for lower energies should be implemented when generating configurations.\todo[inline]{This is too ambiguous}
 
 For polymers, it is natural to generate configurations on a per monomer basis. The energy gained by adding a monomer is dependent only on previously placed monomers. This means we can model the system as a Markov chain. The Rosenbluth and Rosenbluth (RR) algorithm is based on this process.
 
