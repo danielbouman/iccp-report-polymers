@@ -1,9 +1,7 @@
 \section{Introduction}
 
-<<<<<<< HEAD
-
 By assuming the polymers are situated in a dilute solution, polymer-polymer self-interactions will prevail. This means that to extract data of the behaviour of the polymers, creating an ensemble of individual polymers will be sufficient.
-The interaction between the beads is modelled by a Lennard-Jones (LJ) potential (Eq. \ref{eq:lj}, which represents a Van der Waals attraction at larger distances and repulsion at smaller distances, and a bending energy (Eq. \ref{eq:bending_energy}), which simulates the semi-flexibility of polymers. The LJ potential energy is given by 
+The interaction between the beads is modelled by a Lennard-Jones (LJ) potential (Eq. \ref{eq:lj}), which represents a Van der Waals attraction at larger distances and repulsion at smaller distances, and a bending energy (Eq. \ref{eq:bending_energy}), which simulates the semi-flexibility of polymers. The LJ potential energy is given by 
 
 \begin{equation}\label{eq:lj}
    E_{LJ} = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6} \right],
@@ -13,7 +11,7 @@ The interaction between the beads is modelled by a Lennard-Jones (LJ) potential 
 \end{equation} where $\epsilon_b\geq 0$ is the bending energy strength and $\theta$ is the angle between the new and preceding bead \cite{hsu2011review}.
 
 \subsection{Markov chain}
-For a canonical ensemble the probability of a given state $\alpha$ is proportional to the Boltzmann weight, $P(\alpha) \propto e^{-\beta E(\alpha)}$, where the proportionality constant is given by the normalization constraint.  Here $\beta=1/\left(k_B T\right)$, where $k_B$ is the Boltzmann constant, $T$ the temperature and $E(\alpha)$ the energy of a state $\alpha$. For polymers, it is natural to generate configurations on a per bead basis. The only restriction on the each new 
+For a canonical ensemble the probability of a given state $\alpha$ is proportional to the Boltzmann weight, $P(\alpha) \propto e^{-\beta E(\alpha)}$, where the proportionality constant is given by the normalization constraint.  Here $\beta=1/\left(k_B T\right)$, where $k_B$ is the Boltzmann constant, $T$ the temperature and $E(\alpha)$ the energy of a state $\alpha$. For polymers, it is natural to generate configurations on a per bead basis. The only restriction on the each new \todo[inlin]{sentence not complete}
 
 The energy gained by adding a monomer is dependent only on previously placed monomers. This means the simulation acts like a Markov chain. The basic Rosenbluth and Rosenbluth (RR) algorithm outlined below follows a Markov Chain Monte Carlo method.
 
