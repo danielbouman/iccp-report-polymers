@@ -1,12 +1,13 @@
 \section{Pruning and enrichment}
-For long chains the Rosenbluth method becomes inefficient, as was shown by Batoulis and Kremer \cite{batoulis1988statistical}. To make the Rosenbluth algorithm more efficient, Grassberger has suggested pruning and enriching the population. If a partially grown polymer gets a weight below a certain threshold, it is discarded or `pruned'. When a partially grown polymer gets a weight above a certain, the polymer is split. Both polymers are independently grown from this point on. The population in now `enriched'. This combined with the Rosenbluth algorithm is called pruned-enriched Rosenbluth method (PERM). 
+For long chains the Rosenbluth method becomes inefficient, as was shown by Batoulis and Kremer \cite{batoulis1988statistical}. To make the Rosenbluth algorithm more efficient, Grassberger has suggested pruning and enriching the population. If a partially grown polymer gets a weight below a certain threshold, it is discarded or 'pruned'. When a partially grown polymer gets a weight above a certain, the polymer is split. Both polymers are independently grown from this point on. The population is now 'enriched'. This combined with the Rosenbluth algorithm is called pruned-enriched Rosenbluth method (PERM). 
 
 The reasoning behind pruning and enrichment is that it is inefficient to continue growing a partial polymer with a low weight since it will have a low contribution to the weighted average. It is then better to prune this polymer and start over. When a polymer gets a relatively high weight it is important and advantageous to make a copy of this polymer.
 
 The partition sum of a canonical ensemble in thermal equilibrium is given by
 \begin{gather*}
     Z(\beta) = \sum_X e^{-\beta E(X)}.
-\end{gather*} For a finite system the partition sum can be estimated by \cite{hsu2011review}
+\end{gather*}
+For a finite system the partition sum can be estimated by \cite{hsu2011review}
 \begin{gather*}
     Z_n \simeq \hat{Z}_n
     = \frac{1}{N_l} \sum_{n=0}^{N_l}W_l(n),
