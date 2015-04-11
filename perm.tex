@@ -1,15 +1,11 @@
 \section{Pruning and enrichment}
-For long chains the Rosenbluth method becomes inefficient, as was shown by Batoulis and Kremer \cite{batoulis1988statistical}. To make the Rosenbluth algorithm more efficient, Grassberger has suggested pruning and enriching the population. If a partially grown polymer gets a weight below a certain threshold, half of the time the polymer is discarded (`pruned'), and the other half of the time its weight is doubled (to compensate for the pruned polymers) and growing continues. When a partially grown polymer gets a weight above a certain threshold, the polymer is split. Both polymers are independently grown from this point on and their weights are halved. The population is now `enriched'. This combined with the Rosenbluth algorithm is called the pruned-enriched Rosenbluth method (PERM).
+For long chains the Rosenbluth method becomes inefficient and inaccurate, as was shown by Batoulis and Kremer \cite{batoulis1988statistical}. The inefficiency occurs due to the fact that still too much time is spent on generating polymers with a low Boltzmann weight. The inaccuracy is caused due to the fact that the weights of the indivual monomers are only weakly correlated, which results in a large spread in the final weights of the polymers. This causes a few configurations to dominate the other configurations in their weights, causing those configurations to dominate the sample average. To sample the phase more effectively, Grassberger has suggested pruning and enriching the population. If a partially grown polymer gets a weight below a certain threshold, half of the time the polymer is discarded (`pruned'), and the other half of the time its weight is doubled (to compensate for the pruned polymers) and growing continues. When a partially grown polymer gets a weight above a certain threshold, the polymer is split. Both polymers are independently grown from this point on and their weights are halved. The population is now `enriched'. This combined with the Rosenbluth algorithm is called the pruned-enriched Rosenbluth method (PERM).
 
 The reasoning behind pruning and enrichment is that it is inefficient to continue growing a partial polymer with a low weight since it will have a low contribution to the weighted average. It is then better to prune this polymer and start over. When a polymer gets a relatively high weight it is important and advantageous to make a copy of this polymer.
 
 \todo[inline]{Illustration of pruning and enrichment}
 
-For a finite system the partition sum can be estimated by \cite{hsu2011review}
-=======
-    Z(\beta) = \sum_\alpha e^{-\beta E(\alpha)}.
-\end{gather*} For a finite system the partition sum can be estimated\cite{hsu2011review} by 
->>>>>>> 84db36b6823c94fd65cbd367ddf23d2dc2fbb40f
+For a finite system the partition sum can be estimated\cite{hsu2011review} by 
 \begin{gather*}
     Z^{(l)} \simeq \hat{Z}^{(l)}
     = \frac{1}{N_l} \sum_{n=0}^{N_l}W_n^{(l)},
