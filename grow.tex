@@ -1,15 +1,5 @@
 \section{Rosenbluth algorithm}
-Polymers are grown using the RR algorithm \cite{rosenbluth1955monte}. Between the beads we take a fixed distance of 1. Because of this fixed distance the interaction between the adjacent beads is independent of orientation. And so the first two beads of a polymer are always placed at positions $(0,0)$ and $(1,0)$. For the third bead, a discrete number of candidate positions $\theta_j$ are determined. In our case $j=1,\cdots,6$. Since the distance between neighbouring beads is always one, these positions lie on a circle around the first bead, with a spacing of $2\pi/6$ radians between them. To prevent a bias in the direction of the polymer, these positions are given a new random offset for each new bead.
+Setting the distance between subsequent beads to unity, it can be seen that the initial two beads can be placed at placed at positions $(0,0)$ and $(1,0)$, without loss of generality. For the third bead, a discrete number of candidate positions $\theta_j$ are determined. For the simulations run, $j=1,\cdots,6$. Since the distance between neighbouring beads is always one, these positions lie on a circle around the second bead, with a spacing of $2\pi/6$ radians between them. To prevent a bias in the direction of the polymer, these positions are given a new random offset for each new bead.
 \begin{gather}
     w_j^{(l)} = e^\frac{-E(\theta_j)}{k_BT},
-\end{gather} where $l$ denotes the bead that will be added and $E(\theta_j)$ is the energy associated with candidate position $\theta_j$. Since the separation between two adjacent beads is fixed, the energy contribution from adjacent beads is constant. This implies that these interactions have no physical significance. The sum of the weights $w_j^{(l)}$ from the candidate positions is $W^{(l)} = \sum_j w_j^{(l)}$. The final position of bead $l$ is then chosen with probability $w_j^{(l)}/W^{(l)}$. This process is then repeated for the remaining beads.
-
-Since in the canonical ensemble the thermodynamical average of a quantity $A$ is given by
-\begin{equation}
-\langle A \rangle = \sum P_nA_n = \frac{\sum_n W_n A_n}{\sum_n W_n},
-\end{equation}
-
-the total weight of each polymer
-\begin{equation}\label{eq:polymer_weight}s
-    W_n = \prod_{l=2}^L w_j^{(l)} = \prod_{l=2}^Le^{-\beta e_j} = e^{-\beta E_{total}},
-\end{equation} where $n$ denotes the polymer and $E_{total}$ is the total energy of the polymer is calculated and stored for each polymer.  Note that $l=2$ is the third polymer, since the simulation starts counting at $0$.
+\end{gather} where $l$ denotes the bead that will be added and $E(\theta_j)$ is the energy associated with candidate position $\theta_j$. Since the separation between two adjacent beads is fixed, the energy contribution from adjacent beads is constant. This implies that these interactions have no physical significance. The sum of the weights $w_j^{(l)}$ from the candidate positions is $W^{(l)} = \sum_j w_j^{(l)}$. The final position of bead $l$ is then chosen with probability $w_j^{(l)}/W^{(l)}$, creating a bias towards states with a lower energy. This process is then repeated for the remaining beads.

@@ -1,7 +1,6 @@
 \section{Introduction}
 
-By assuming the polymers are situated in a dilute solution, polymer-polymer self-interactions will prevail. This means that to extract data of the behaviour of the polymers, creating an ensemble of individual polymers will be sufficient.
-The interaction between the beads is modelled by a Lennard-Jones (LJ) potential (Eq. \ref{eq:lj}), which represents a Van der Waals attraction at larger distances and repulsion at smaller distances, and a bending energy (Eq. \ref{eq:bending_energy}), which simulates the semi-flexibility of polymers. The LJ potential energy is given by 
+By assuming the polymers are situated in a dilute solution, polymer-polymer self-interactions will p;revail. This means that to extract data of the behaviour of the polymers, creating an ensemble of individual polymers will be sufficient. The polymers are modelled as consisting of a chain of `beads', where the beads are groups of atoms. The distance between subsequent beads is fixed\footnote{It is possible to set the distance between subsequent beads as variable, where the corresponding energy can be modelled by a harmonic potential. Assuming that the strength of the harmonic potential is sufficiently high, this case reduces to a fixed distance between beads.}. The interaction between the beads is modelled by a Lennard-Jones (LJ) potential (Eq. \ref{eq:lj}), which represents a Van der Waals attraction at larger distances and repulsion at smaller distances, and a bending energy (Eq. \ref{eq:bending_energy}), which simulates the semi-flexibility of polymers. The LJ potential energy is given by 
 
 \begin{equation}\label{eq:lj}
    E_{LJ} = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6} \right],
@@ -11,9 +10,25 @@ The interaction between the beads is modelled by a Lennard-Jones (LJ) potential 
 \end{equation} where $\epsilon_b\geq 0$ is the bending energy strength and $\theta$ is the angle between the new and preceding bead \cite{hsu2011review}.
 
 \subsection{Markov chain}
-For a canonical ensemble the probability of a given state $\alpha$ is proportional to the Boltzmann weight, $P(\alpha) \propto e^{-\beta E(\alpha)}$, where the proportionality constant is given by the normalization constraint.  Here $\beta=1/\left(k_B T\right)$, where $k_B$ is the Boltzmann constant, $T$ the temperature and $E(\alpha)$ the energy of a state $\alpha$. For polymers, it is natural to generate configurations on a per bead basis. The only restriction on the each new \todo[inlin]{sentence not complete}
+For a canonical ensemble the probability of a given state $\alpha$ is proportional to the Boltzmann weight, $P(\alpha) \propto e^{-\beta E(\alpha)}$, where the proportionality constant is given by the normalization constraint.  Here $\beta=1/\left(k_B T\right)$, where $k_B$ is the Boltzmann constant, $T$ the temperature and $E(\alpha)$ the energy of a state $\alpha$. For polymers, it is natural to generate configurations bead by bead. The phase space can be sampled randomly, i.e. configurations are generated randomly where the only constraints are the amount of beads and the distance between subsequent beads is fixed.
+In the canonical ensemble the thermodynamical average of a quantity $A$ is given by
+\begin{gather}
+	\langle A \rangle = \sum P_nA_n = \frac{\sum W_n A_n}{\sum W_n},
+\end{gather}
+where the sum is over the whole phase space. If the phase space is sampled randomly $K$ times, then
 
-The energy gained by adding a monomer is dependent only on previously placed monomers. This means the simulation acts like a Markov chain. The basic Rosenbluth and Rosenbluth (RR) algorithm outlined below follows a Markov Chain Monte Carlo method.
+\begin{gather}
+	\langle \tilde{A} \rangle_{K} = \frac{\sum_{n=1}^K W_n A_n}{\sum_{n=1}^K W_n},\\
+	\langle A \rangle = \lim_{K\rightarrow \infty}\langle \tilde{A} \rangle_{K}.
+\end{gather}
+
+
+The total weight of each polymer
+\begin{equation}\label{eq:polymer_weight}
+    W_n = \prod_{l=2}^L w_j^{(l)} = \prod_{l=2}^Le^{-\beta e_j} = e^{-\beta E_{total}},
+\end{equation} where $n$ denotes the polymer and $E_{total}$ is the total energy of the polymer is thus calculated and stored for each polymer.  Note that $l=2$ is the third polymer, since the simulation starts counting at $0$.
+
+ Since the polymer is not explicitly self-avoiding, the possible new configurations when a new bead is added depends only on the last bead that was placed. This method thus has the Markov property. However, sampling the phase space completely randomly is, as can be expected incredibly inefficient, mainly due to the high probability of beads being placed close to each other where the hardcore repulsion causes the weight of almost all the generated polymers to become negligible. As outlined below, the Rosenbluth and Rosenbluth (RR) algorithm\cite{rosenbluth1955monte} follows a Markov Chain Monte Carlo method, where a bias is implemented to sample the phase space for lower energy states.
 
 
 
