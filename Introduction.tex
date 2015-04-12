@@ -11,25 +11,24 @@ The polymers are modelled as consisting of a chain of ``beads'', where the beads
 \end{equation} where $\epsilon_b\geq 0$ is the bending energy strength and $\theta$ is the angle between the new and preceding bead \cite{hsu2011review}.
 
 \subsection{Markov chain}
-For a canonical ensemble the probability of a given state $\alpha$ is proportional to the Boltzmann weight, $P(\alpha) \propto e^{-\beta E(\alpha)}$, where the proportionality constant (the inverse of the partition function) is fixed by the normalization constraint.  Here $\beta=1/\left(k_B T\right)$, where $T$ the temperature and $E(\alpha)$ the energy of a state $\alpha$. For polymers, it is natural to generate configurations bead by bead. The phase space can be sampled randomly, i.e. configurations are generated randomly where the only constraints are the amount of beads and the distance between subsequent beads is fixed.
+For a canonical ensemble the probability of a given state $\alpha$ is proportional to the Boltzmann weight $W_\alpha$, $P(\alpha) \propto e^{-\beta E(\alpha)}$, where the proportionality constant (the inverse of the partition function) is fixed by the normalization constraint.  Here $\beta=1/\left(k_B T\right)$, where $T$ the temperature and $E(\alpha)$ the energy of a state $\alpha$. For polymers, it is natural to generate configurations bead by bead. The phase space can be sampled randomly, i.e. configurations are generated randomly where the only constraints are the amount of beads and the distance between subsequent beads is fixed.
 In the canonical ensemble the thermodynamical average of a quantity $A$ is given by
 \begin{gather}
-	\langle A \rangle = \sum P_nA_n = \frac{\sum W_n A_n}{\sum W_n},
+	\langle A \rangle = \sum P_\alpha A_{\alpha} = \frac{\sum W_\alpha A_{\alpha}}{\sum W_{\alpha}},
 \end{gather}
 where the sum is over the whole phase space. If the phase space is sampled $K$ times, then
 
 \begin{gather}
-	\langle \tilde{A} \rangle_{K} = \frac{\sum_{n=1}^K W_n A_n}{\sum_{n=1}^K W_n},\\
+	\langle \tilde{A} \rangle_{K} = \frac{\sum_{n=1}^K W_n A_n};{\sum_{n=1}^K W_n},\\
 	\langle A \rangle = \lim_{K\rightarrow \infty}\langle \tilde{A} \rangle_{K}.
 \end{gather}
 
-
-The total weight of each polymer
-\begin{equation}\label{eq:polymer_weight}
+For the weights
+\end{equation}
     W_n = \prod_{l=2}^L w_j^{(l)} = \prod_{l=2}^Le^{-\beta e_j} = e^{-\beta E_{total}},
-\end{equation} where $n$ denotes the polymer and $E_{total}$ is the total energy of the polymer is thus calculated and stored for each polymer. Sampling the phase space for states with low energy will increase the convergence. Note that $l=2$ is the third polymer, since the simulation starts counting at $0$.
+\end{equation} where $n$ denotes the polymer, $w_j$ the Boltzmann weight for a bead $j$ and $E_{total}$ is the total energy of the polymer. Each $W_n$ is thus calculated and stored for each polymer. It is easy to see that sampling the phase space for states with low energy will speed up the convergence of $	\langle \tilde{A} \rangle_{K}$ to $	\langle A \rangle$.  Note that $l=2$ is the third polymer, since the simulation starts counting at $0$.
 
- Since the polymer is not explicitly self-avoiding, the possible new configurations when a new bead is added depends only on the last bead that was placed. This method thus has the Markov property. However, sampling the phase space completely randomly is, as can be expected incredibly inefficient, mainly due to the high probability of beads being placed close to each other where the hardcore repulsion causes the weight of almost all the generated polymers to become negligible. As outlined below, the Rosenbluth and Rosenbluth (RR) algorithm\cite{rosenbluth1955monte} follows a Markov Chain Monte Carlo method, where a bias is implemented to sample the phase space for lower energy states.
+Since the polymer is not explicitly self-avoiding, the possible new configurations when a new bead is added depends only on the last bead that was placed. This method thus has the Markov property. However, sampling the phase space completely randomly is, as can be expected incredibly inefficient, mainly due to the high probability of beads being placed close to each other where the hardcore repulsion causes the weight of almost all the generated polymers to become negligible. As outlined below, the Rosenbluth and Rosenbluth (RR) algorithm \cite{rosenbluth1955monte} follows a Markov Chain Monte Carlo method, where a bias is implemented to sample the phase space for lower energy states.
 
 
 
