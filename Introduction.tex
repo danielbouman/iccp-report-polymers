@@ -24,7 +24,7 @@ where the sum is over the whole phase space. If the phase space is sampled $K$ t
 \end{gather}
 
 For the weights
-\end{equation}
+\begin{equation}
     W_n = \prod_{l=2}^L w_j^{(l)} = \prod_{l=2}^Le^{-\beta e_j} = e^{-\beta E_{total}},
 \end{equation} where $n$ denotes the polymer, $w_j$ the Boltzmann weight for a bead $j$ and $E_{total}$ is the total energy of the polymer. Each $W_n$ is thus calculated and stored for each polymer. It is easy to see that sampling the phase space for states with low energy will speed up the convergence of $	\langle \tilde{A} \rangle_{K}$ to $	\langle A \rangle$.  Note that $l=2$ is the third polymer, since the simulation starts counting at $0$.
 
