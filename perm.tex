@@ -1,9 +1,16 @@
 \section{Pruning and enrichment}
-For long chains the Rosenbluth method becomes inefficient and inaccurate, as was shown by Batoulis and Kremer \cite{batoulis1988statistical}. The inefficiency occurs due to the fact that still too much time is spent on generating polymers with a low Boltzmann weight. The inaccuracy is caused due to the fact that the weights of the indivual monomers are only weakly correlated, which results in a large spread in the final weights of the polymers. This causes a few configurations to dominate the other configurations in their weights, causing those configurations to dominate the sample average. To sample the phase more effectively, Grassberger has suggested pruning and enriching the population. If a partially grown polymer gets a weight below a certain threshold, half of the time the polymer is discarded (`pruned'), and the other half of the time its weight is doubled (to compensate for the pruned polymers) and growing continues. When a partially grown polymer gets a weight above a certain threshold, the polymer is split. Both polymers are independently grown from this point on and their weights are halved. The population is now `enriched'. This combined with the Rosenbluth algorithm is called the pruned-enriched Rosenbluth method (PERM).
+For long chains the RR algorithm becomes inefficient and inaccurate, as was shown by Batoulis and Kremer \cite{batoulis1988statistical}. The inefficiency occurs due to the fact that still too much time is spent on generating polymers with a low Boltzmann weight. The inaccuracy is caused due to the fact that the weights of the individual monomers are only weakly correlated, which results in a large spread in the final weights of the polymers. This causes a few configurations to dominate the other configurations in their weights, causing those configurations to dominate the sample average. To sample the phase more effectively, Grassberger has suggested pruning and enriching the population. If a partially grown polymer gets a weight below a certain threshold, half of the time the polymer is discarded (`pruned'), and the other half of the time its weight is doubled (to compensate for the pruned polymers) and growing continues. When a partially grown polymer gets a weight above a certain threshold, the polymer is split. Both polymers are independently grown from this point on and their weights are halved. The population is now `enriched'. This combined with the Rosenbluth algorithm is called the pruned-enriched Rosenbluth method (PERM).
 
 The reasoning behind pruning and enrichment is that it is inefficient to continue growing a partial polymer with a low weight since it will have a low contribution to the weighted average. It is then better to prune this polymer and start over. When a polymer gets a relatively high weight it is important and advantageous to make a copy of this polymer.
 
-\todo[inline]{Illustration of pruning and enrichment}
+\begin{Figure}
+    \vspace{18 mm}
+    \centering
+    \def\svgwidth{\linewidth}
+    \input{perm_eps.tex}
+    \captionof{figure}{Pruning and enrichment. The new weights are depicted above each branch. Upper branch: the weight of the partial polymer $W_n^{(l)} > W_+^{(l)}$, so the polymer is split and the weight of both polymers is halved. The middle branch: $W_n^{(l)} < W_-^{(l)}$ the weight is doubled and the polymer continues growing. Bottom branch: $W_n^{(l)} < W_-^{(l)}$ and the polymer is pruned.}
+    \label{fig:my_label}
+\end{Figure}
 
 For a finite system the partition sum can be estimated\cite{hsu2011review} by 
 \begin{gather*}
