@@ -1,15 +1,18 @@
 \section{Results and discussion}
 
 \subsection{Scaling of the end to end distance}
+The polymer grown with RR and PERM correspond to a self avoiding random walk. ItIt is thus expected that the end-to-end distance $r$ scales with the number of beads as 
+\begin{equation*}
+    r \propto \left(N_l\right)^\nu,
+\end{equation*} where $\nu$ is the Flory constant and should be $3/4$ for 2D \cite{jmt}. In Figure \ref{fig:r_squared} $\langle r^2\rangle$ is plotted against the number of beads. A trendline is fitted through the data points. The coefficient of determination has the value $R^2 = 0.952$ and the Flory constant was found to be $2\nu = 1.47 \pm 0.0424$ which is in good agreement with the expected value $\nu=3/4$.
 \begin{Figure}
-\centering
-\includegraphics[width=\linewidth]{r_squared.pdf}
-\captionof{figure}{Average end to end distance $\langle r^2\rangle$ as a function of polymer beads $N$ on a log scale. The blue dots depict $\langle r^2\rangle$ and the dashed line is fitted to $\langle r^2\rangle$ with $a\cdot N^{2\nu}$. The fitted value for $2\nu = 1.469 \pm 0.04246$.}
-\label{fig:r_squared}
+    \centering
+    \includegraphics[width=\linewidth]{r_squared.pdf}
+    \captionof{figure}{Average end to end distance $\langle r^2\rangle$ as a function of polymer beads $N$ on a log scale. The blue dots depict $\langle r^2\rangle$ and the dashed line is fitted to $\langle r^2\rangle$ with $a\cdot N^{2\nu}$. The fitted value for $2\nu = 1.469 \pm 0.04246$.}
+    \label{fig:r_squared}
 \end{Figure}
 
-\subsection{Some notes on the program}
-The energy calculations, LJ potential and bending energy, are for better performance written in Fortran. To make a connection between the Fortran code and the Python program, an interface is made using \emph{Fortran to Python interface generator} (F2PY). F2PY creates a Python C/API extension module that makes it possible to call the in Fortran written energy subroutine.
+Note that the population sizes of the data shown in Figure \ref{fig:r_squared} fluctuates significantly. This was found to be problem in most of the simulations, and is especially of influence for polymers with more than $\sim 40$ beads the population size becomes unpredictable. In Figure \ref{fig:r_squared_pop} the population sizes for the ensembles are depicted. The fluctuations in $\langle r^2 \rangle$ for the longer polymers are most likely due to these fluctuations in the populations size. We got the impression that in literature the population size did not fluctuate by large amounts using PERM. Unfortunately we were unable to find the cause of these large fluctuations.
 
 For low temperatures it is expected that the attractive part of the LJ-potential will dominate, causing the polymer to coil up. For higher temperatures, the repulsive part will always dominate, causing the polymer to expand. Since the LJ-potential is negligible beyond a distance of 2.5$\sigma$, the end to end distance will become independent on the temperature for high temperatures. Since a random walk will exhibit an end to end distance $r$ somewhere between these two regimes, it is expected that inbetween the two regimes the temperature $T_c$ can be found where $\langle r^2 \rangle$ equals $\langle r_{random}^2 \rangle$, where $\langle r_{random}^2 \rangle = N$ is the expectation value of the end to end distance squared for a random walk in 2 dimensions.
 \begin{Figure}
@@ -18,4 +21,7 @@ For low temperatures it is expected that the attractive part of the LJ-potential
  \captionof{figure}{Expectation value for the end to end distance squared as function of the temperature, for polymers with a length of 30 beads}\label{fig:end_to_end_afo_temperature}
 \end{Figure}
 
-Since for high temperatures $\langle r^2 \rangle$ becomes aprroximately constant, a fit function in the form of $a(1-e^{-bT})$ was chosen, with $a$ and $b$ the fit parameters. From the fit a value of $T_c \approx 0.35$ is found.
+Since for high temperatures $\langle r^2 \rangle$ becomes approximately constant, a fit function in the form of $a(1-e^{-bT})$ was chosen, with $a$ and $b$ the fit parameters. From the fit a value of $T_c \approx 0.35$ is found.
+
+\subsection{Some notes on the program}
+The energy calculations, LJ potential and bending energy, are for better performance written in Fortran. To make a connection between the Fortran code and the Python program, an interface is made using \emph{Fortran to Python interface generator} (F2PY). F2PY creates a Python C/API extension module that makes it possible to call the in Fortran written energy subroutine.
