@@ -7,9 +7,7 @@ Polymers are grown using the RR algorithm \cite{rosenbluth1955monte}. Between th
 Since in the canonical ensemble the thermodynamical average of a quantity $A$ is given by
 \begin{equation}
 \langle A \rangle = \sum P_nA_n = \frac{\sum_n W_n A_n}{\sum_n W_n},
-\end{equation}
-
-the total weight of each polymer
+\end{equation} the total weight of each polymer becomes
 \begin{equation}\label{eq:polymer_weight}s
     W_n = \prod_{l=2}^L w_j^{(l)} = \prod_{l=2}^Le^{-\beta e_j} = e^{-\beta E_{total}},
 \end{equation} where $n$ denotes the polymer and $E_{total}$ is the total energy of the polymer is calculated and stored for each polymer.  Note that $l=2$ is the third polymer, since the simulation starts counting at $0$.

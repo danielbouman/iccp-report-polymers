@@ -3,7 +3,15 @@ For long chains the Rosenbluth method becomes inefficient and inaccurate, as was
 
 The reasoning behind pruning and enrichment is that it is inefficient to continue growing a partial polymer with a low weight since it will have a low contribution to the weighted average. It is then better to prune this polymer and start over. When a polymer gets a relatively high weight it is important and advantageous to make a copy of this polymer.
 
-\todo[inline]{Illustration of pruning and enrichment}
+\begin{Figure}
+    \vspace{18 mm}
+    \centering
+    \def\svgwidth{\linewidth}
+    \input{perm_eps.tex}
+    \captionof{figure}{Pruning and enrichment. The new weights are depicted above each branch. Upper branch: the weight of the partial polymer $W_n^{(l)} > W_+^{(l)}$, so the polymer is split and the weight of both polymers is halved. The middle branch: $W_n^{(l)} < W_-^{(l)}$ the weight is doubled and the polymer continues growing. Bottom branch: $W_n^{(l)} < W_-^{(l)}$ and the polymer is pruned.} 
+    \vspace{18 mm}
+    \label{fig:my_label}
+\end{Figure}
 
 For a finite system the partition sum can be estimated\cite{hsu2011review} by 
 \begin{gather*}
