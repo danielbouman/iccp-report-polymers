@@ -1,7 +1,7 @@
 \section{Results and discussion}
 
 \subsection{Scaling of the end to end distance}
-The polymer grown with RR and PERM correspond to a self avoiding random walk. ItIt is thus expected that the end-to-end distance $r$ scales with the number of beads as 
+The polymer grown with RR and PERM correspond to a self avoiding random walk. It is thus expected that the end to end distance $r$ scales with the number of beads as 
 \begin{equation*}
     r \propto \left(N_l\right)^\nu,
 \end{equation*} where $\nu$ is the Flory constant and should be $3/4$ for 2D \cite{jmt}. In Figure \ref{fig:r_squared} $\langle r^2\rangle$ is plotted against the number of beads. A trendline is fitted through the data points. The coefficient of determination has the value $R^2 = 0.952$ and the Flory constant was found to be $2\nu = 1.47 \pm 0.0424$ which is in good agreement with the expected value $\nu=3/4$.  
@@ -12,7 +12,7 @@ The polymer grown with RR and PERM correspond to a self avoiding random walk. It
     \label{fig:r_squared}
 \end{Figure}
 
-The $\langle r^2\rangle$ has large fluctuates when the polymers get longer. This is most likely due to the population sizes of the ensembles fluctuates significantly. This was found to be problem in most of the simulations, and is especially of present for polymers with more than $\sim 40$ beads the population size becomes unpredictable. In Figure \ref{fig:r_squared_pop} the population sizes for the ensembles in Figure \ref{fig:r_squared} are depicted. We got the impression that in literature the population size did not fluctuate by large amounts using PERM. Unfortunately we were unable to find the cause of these large fluctuations.
+The fluctuations in $\langle r^2\rangle$  become greater as the polymers get longer. This is most likely due to the fact that the population sizes of the ensembles also fluctuates significantly for larger polymers. This was found to be problem in most of the simulations, and is especially of present for polymers with more than $\sim 40$ beads the population size becomes unpredictable. In Figure \ref{fig:r_squared_pop} the population sizes for the ensembles in Figure \ref{fig:r_squared} are depicted. We got the impression that in literature the population size did not fluctuate by large amounts using PERM. Unfortunately we were unable to find the cause of these large fluctuations.
 
 For low temperatures it is expected that the attractive part of the LJ-potential will dominate, causing the polymer to coil up. For higher temperatures, the repulsive part will always dominate, causing the polymer to expand. Since the LJ-potential is negligible beyond a distance of 2.5$\sigma$, the end to end distance will become independent on the temperature for high temperatures. Since a random walk will exhibit an end to end distance $r$ somewhere between these two regimes, it is expected that inbetween the two regimes the temperature $T_c$ can be found where $\langle r^2 \rangle$ equals $\langle r_{random}^2 \rangle$, where $\langle r_{random}^2 \rangle = N$ is the expectation value of the end to end distance squared for a random walk in 2 dimensions.
 \begin{Figure}
