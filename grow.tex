@@ -1,4 +1,4 @@
-\section{Rosenbluth algorithm}
+\section{Rosenbluth and Rosenbluth algorithm}
 Setting the distance between subsequent beads to unity, it can be seen that the initial two beads can be placed at placed at positions $(0,0)$ and $(1,0)$, without loss of generality. For the third bead, a discrete number of candidate positions $\theta_j$ are determined. For the simulations run, $j=1,\cdots,6$. Since the distance between neighbouring beads is always one, these positions lie on a circle around the second bead, with a spacing of $2\pi/6$ radians between them. To prevent a bias in the direction of the polymer, these positions are given a new random offset for each new bead.
 \begin{gather}
     w_j^{(l)} = e^\frac{-E(\theta_j)}{k_BT},
