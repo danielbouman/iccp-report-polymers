@@ -19,9 +19,13 @@ For low temperatures it is expected that the attractive part of the LJ-potential
   \centerfloat
      \includegraphics[scale=0.4]{end_to_end_distance_as_function_of_the_temperature.pdf}
  \captionof{figure}{Expectation value for the end to end distance squared as function of the temperature, for polymers with a length of 30 beads}\label{fig:end_to_end_afo_temperature}
+\end{Figure} Since for high temperatures $\langle r^2 \rangle$ becomes approximately constant, a fit function in the form of $a(1-e^{-bT})$ was chosen, with $a$ and $b$ the fit parameters. From the fit a value of $T_c \approx 0.35$ is found.
+
+\begin{Figure}
+  \centerfloat
+     \includegraphics[scale=0.4]{radius_of_gyr_bending.pdf}
+ \captionof{figure}{caption}\label{fig:radius_of_gyr_bending}
 \end{Figure}
 
-Since for high temperatures $\langle r^2 \rangle$ becomes approximately constant, a fit function in the form of $a(1-e^{-bT})$ was chosen, with $a$ and $b$ the fit parameters. From the fit a value of $T_c \approx 0.35$ is found.
-
-\subsection{Some notes on the program}
+\subsection{Note on the program}
 The energy calculations, LJ potential and bending energy, are for better performance written in Fortran. To make a connection between the Fortran code and the Python program, an interface is made using \emph{Fortran to Python interface generator} (F2PY). F2PY creates a Python C/API extension module that makes it possible to call the in Fortran written energy subroutine.
